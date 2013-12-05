@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    
+    {% for post in author_articles %}
+        <h3><a href="{{ url_for('show_article', id=post.id, slug=post.slug) }}">{{ post.title }}</a></h3>
+        <p>{{ post.created_by_in_words }} | {{ post.created_in_words }} | {{ post.category }}</p>
+        <hr/>
+    {% endfor %}
+
+{% endblock %}
