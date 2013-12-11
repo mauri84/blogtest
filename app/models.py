@@ -1,6 +1,7 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import db
 from sqlalchemy import desc
+from sqlalchemy.dialects.mysql import INTEGER as Integer
 import datetime
 from webhelpers.date import time_ago_in_words
 from webhelpers.text import urlify

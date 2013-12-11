@@ -1,0 +1,4 @@
+#ignore all migration files
+migrations/
+#ignore all log files
+tmp/
