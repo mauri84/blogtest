@@ -5,6 +5,10 @@
     <h1>{{ article.title }}</h1>
 
     <p>{{ article.created_in_words }}</p>
+    {% if article.url %}
+        <a href="{{article.url}}"><img src="{{ url_for('static', filename='uploads/%s' % article.arch_local) }}"/></a>
+        <p></p>
+    {% endif %}
     <p>{{ article.body | safe }}</p>
     <h6>Created by {{ article.person_name }} | {{ article.created_in_words }} ago</h6>
     <hr/>
