@@ -6,6 +6,9 @@
     <hr/>
     {% for post in articles %}
     <h3><a href="{{ url_for('show_article', id=post.id, slug=post.slug) }}">{{ post.title }}</a></h3>
+        {% if post.url %}
+            <p><img src="{{ url_for('static', filename='uploads/%s' % post.arch_local) }}"/></p>
+        {% endif %}
     <p>{{ post.body |truncate(200)| safe }}</p>
     <h6>
         By <a href="author/{{ post.person_name }}">{{ post.person_name }}</a> | {{ post.created_in_words }} ago | <a href="category/{{ post.category_name }}">{{ post.category_name }}</a>

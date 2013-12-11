@@ -11,8 +11,10 @@ def category_choice():
 class ArticleCreateForm(Form):
     title = TextField('Title', [validators.Required("Please enter Title.")], filters=[strip_filter])
     body = TextAreaField('Body', [validators.Required("Please enter body.")], filters=[strip_filter])
+    url = TextField('URL ://', filters=[strip_filter])
     category = QuerySelectField('Category', query_factory=category_choice )
     person_name = HiddenField()
+    arch_local = HiddenField()
 
 class ArticleUpdateForm(ArticleCreateForm):
     id = HiddenField()
@@ -53,7 +55,7 @@ class SigninForm(Form):
         if person and person.check_password(self.password.data):
             return True
         else:
-            self.email.errors.append("Invalid username")
+            self.email.errors.append("Invalid Password")
             return False 
 
 class CategoryCreateForm(Form):

@@ -8,7 +8,16 @@ from flask.ext.migrate import Migrate
 app = Flask(__name__)
 
 app.config.from_object('config')
+<<<<<<< HEAD
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://ctc:ctc@localhost/blogtest'
+=======
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://mauri:mauri@localhost/blogtest'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://ctc:ctc@localhost/blogtest2'
+
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+>>>>>>> 902aa4cf1883adb4c5ceffe0c770034f0e094c61
 
 db = SQLAlchemy(app)
 #db.app = app
@@ -29,4 +38,7 @@ if not app.debug:
 	
 from app import models
 from app import views
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902aa4cf1883adb4c5ceffe0c770034f0e094c61
