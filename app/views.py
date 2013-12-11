@@ -2,6 +2,7 @@ from flask import render_template, request, session, url_for, redirect
 from models import Article, Person, Category
 from app import app, db
 from forms import SignupForm, ArticleCreateForm, SigninForm, ArticleUpdateForm, CategoryCreateForm, PersonUpdateForm
+from auxiliary import image
 
 @app.route('/')
 def index():
@@ -39,11 +40,20 @@ def create():
     person = Person.query.filter_by(email=session['email']).first()
     if person:
         article = Article()
+        print 'Article created'
         form = ArticleCreateForm()
+        print 'Form created'
         name = person.firstname
+        print 'name assigned'
         form.person_name.data = person.firstname
         if form.validate_on_submit():
+            print 'inside article post'
             form.populate_obj(article)
+            url = form.url.data
+            print url
+            if url:
+                arch_local = image(url, person.firstname)
+            article.arch_local = arch_local
             db.session.add(article)
             db.session.commit()
             return redirect(url_for('index', name=name))

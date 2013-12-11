@@ -39,6 +39,10 @@ class Article(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
     body = db.Column(db.Text)
+    #image string TEST TEST TEST
+    url = db.Column(db.String(300))
+    arch_local = db.Column(db.String(200))
+    
     created = db.Column(db.DateTime, default=datetime.datetime.now)
     category_name = db.Column(db.String(10), db.ForeignKey(Category.name))
     category = db.relationship(Category)
@@ -64,15 +68,15 @@ class Article(db.Model):
     @property
     def created_in_words(self):
         return time_ago_in_words(self.created)
-
+    
     @property
     def created_by_in_words(self):
         return self.person_name
-
+        
     @property
     def slug(self):
         return urlify(self.title)
-
+    
 
 
 
