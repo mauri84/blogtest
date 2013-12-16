@@ -1,3 +1,4 @@
 #ignores all files in Migrations
 migrations/
 migrations.save/
+savemigrations/

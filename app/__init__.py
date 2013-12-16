@@ -14,6 +14,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://mauri:mauri@localhost/blogtest'
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['POST_PER_PAGE'] = 5
 
 db = SQLAlchemy()
 db.app = app

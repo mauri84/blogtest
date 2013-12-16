@@ -51,7 +51,8 @@ class Article(db.Model):
 
     @classmethod
     def all(cls):
-        return Article.query.order_by(desc(Article.created)).all()
+        return Article.query.order_by(desc(Article.created))
+        #return Article.query.order_by(desc(Article.created)).all()
 
     @classmethod
     def find_by_id(cls, id):

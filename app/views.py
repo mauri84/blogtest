@@ -5,8 +5,11 @@ from forms import SignupForm, ArticleCreateForm, SigninForm, ArticleUpdateForm, 
 from auxiliary import image
 
 @app.route('/')
-def index():
-    articles = Article.all()
+@app.route('/index')
+@app.route('/index/<int:page>')
+def index(page = 1):
+    articles = Article.all().paginate(page,app.config['POST_PER_PAGE'],False)
+#    articles = Article.all()
     if 'email' in session:
         person = Person.query.filter_by(email=session['email']).first()
         name = person.firstname
@@ -53,7 +56,7 @@ def create():
             print url
             if url:
                 arch_local = image(url, person.firstname)
-            article.arch_local = arch_local
+                article.arch_local = arch_local
             db.session.add(article)
             db.session.commit()
             return redirect(url_for('index', name=name))
