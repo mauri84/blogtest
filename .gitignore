@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ignore all migration files
 migrations/
 #ignore all log files
@@ -12,3 +13,9 @@ migrations.save/
 app/static/uploads
 
 >>>>>>> 902aa4cf1883adb4c5ceffe0c770034f0e094c61
+=======
+#ignores all files in Migrations
+migrations/
+migrations.save/
+savemigrations/
+>>>>>>> d9607955825599cd1317c450f6b1bd3c007c6123
