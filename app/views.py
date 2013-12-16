@@ -53,7 +53,7 @@ def create():
             print url
             if url:
                 arch_local = image(url, person.firstname)
-            article.arch_local = arch_local
+	        article.arch_local = arch_local
             db.session.add(article)
             db.session.commit()
             return redirect(url_for('index', name=name))

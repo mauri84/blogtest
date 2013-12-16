@@ -7,4 +7,8 @@ tmp/
 #ignores all files in Migrations
 migrations/
 migrations.save/
+
+#Ignores all images in static folder
+app/static/uploads
+
 >>>>>>> 902aa4cf1883adb4c5ceffe0c770034f0e094c61
