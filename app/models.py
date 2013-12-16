@@ -1,10 +1,7 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import db
 from sqlalchemy import desc
-<<<<<<< HEAD
 from sqlalchemy.dialects.mysql import INTEGER as Integer
-=======
->>>>>>> d9607955825599cd1317c450f6b1bd3c007c6123
 import datetime
 from webhelpers.date import time_ago_in_words
 from webhelpers.text import urlify
@@ -55,12 +52,8 @@ class Article(db.Model):
 
     @classmethod
     def all(cls):
-<<<<<<< HEAD
-        return Article.query.order_by(desc(Article.created)).all()
-=======
         return Article.query.order_by(desc(Article.created))
         #return Article.query.order_by(desc(Article.created)).all()
->>>>>>> d9607955825599cd1317c450f6b1bd3c007c6123
 
     @classmethod
     def find_by_id(cls, id):

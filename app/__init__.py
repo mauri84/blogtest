@@ -4,38 +4,24 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.script import Manager
 from flask.ext.migrate import Migrate
 
-
 app = Flask(__name__)
 
 app.config.from_object('config')
-<<<<<<< HEAD
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://ctc:ctc@localhost/blogtest'
-=======
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://mauri:mauri@localhost/blogtest'
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://ctc:ctc@localhost/blogtest2'
->>>>>>> d9607955825599cd1317c450f6b1bd3c007c6123
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://mauri:mauri@localhost/blogtest'
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-<<<<<<< HEAD
-#>>>>>>> 902aa4cf1883adb4c5ceffe0c770034f0e094c61
-
-db = SQLAlchemy(app)
-#db.app = app
-#db.init_app(app)
-=======
 app.config['POST_PER_PAGE'] = 5
 
 db = SQLAlchemy()
 db.app = app
 db.init_app(app)
->>>>>>> d9607955825599cd1317c450f6b1bd3c007c6123
 
 migrate = Migrate(app, db)
 manager = Manager(app)
 
-<<<<<<< HEAD
 if not app.debug:
 	import logging
 	from logging.handlers import RotatingFileHandler
@@ -48,8 +34,4 @@ if not app.debug:
 	
 from app import models
 from app import views
-#>>>>>>> 902aa4cf1883adb4c5ceffe0c770034f0e094c61
-=======
-from app import models
-from app import views
->>>>>>> d9607955825599cd1317c450f6b1bd3c007c6123
+
