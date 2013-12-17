@@ -43,21 +43,30 @@ def measurements(image, width=None, height=None):
 
 def image(url, name):
     #Download the image.
+    #print type(url)
     #print url
-    response = requests.get(url)
-    #print response
-    #Open the image
-    image = Image.open(StringIO(response.content))
-    #Calculate the desired height and width of the image
-    desired_width, desired_height = measurements(image)
-    buffer_image = StringIO()
-    #print "Number is", desired_width, desired_height
-    resized_image = image.resize((desired_width, desired_height), Image.ANTIALIAS)
+    split =url.split('.')
+    #print split
+    #print split[-1]
     filename = name+time.strftime("%Y%m%d%s")
     path = app.config['UPLOAD_FOLDER']+'/'+ filename
-    #print path
-    #image.save(path, image.format)
-    #path = path+'bis'
-    resized_image.save(path, image.format, quality=90)
+    response = requests.get(url)
+    extension = split[-1].upper()
+    if extension != 'GIF':
+        #print 'save as a image'
+        #Open the image
+        image = Image.open(StringIO(response.content))
+        #Calculate the desired height and width of the image
+        desired_width, desired_height = measurements(image)
+        buffer_image = StringIO()
+        #print "Number is", desired_width, desired_height
+        resized_image = image.resize((desired_width, desired_height), Image.ANTIALIAS)
+        resized_image.save(path, image.format, quality=90)
+    else:
+        #print 'save as a gif'
+        f = open(path+'.gif', 'w')
+        f.write(response.content)
+        f.close()
+        filename = filename+'.gif'    
     return filename
 
